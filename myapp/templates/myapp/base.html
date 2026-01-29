@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>MRSBK</title>
+</head>
+<body>
+  <nav class="mx-4 mt-4 rounded-2xl bg-blue-600/90 backdrop-blur-md shadow-xl">
+  <div class="flex justify-between items-center px-8 py-4">
+
+    <!-- Logo -->
+    <a href="#"
+       class="font-extrabold italic text-3xl
+              bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500
+              bg-clip-text text-transparent
+              transition-all duration-500
+              hover:scale-110 hover:tracking-widest">
+      OotaKatte
+    </a>
+
+    <!-- Auth Section -->
+    <div class="flex items-center space-x-4 text-white font-semibold">
+
+      {% if user.is_authenticated %}
+        <span class="text-yellow-300">
+          <a href="{% url 'profile'%}"> 👋 {{ user.username }}</a>
+        </span>
+
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit"
+                  class="bg-red-500 hover:bg-red-600
+                         px-4 py-2 rounded-xl
+                         transition">
+            Logout
+          </button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}"
+           class="bg-green-500 hover:bg-green-600
+                  px-4 py-2 rounded-xl
+                  transition">
+          Login
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+</nav>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show success-popup" role="alert">
+      <strong>🎉 Successfully Registered!</strong><br>
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  {% endfor %}
+{% endif %}
+
+
+<!-- AI Customer Support Button -->
+<div class="fixed bottom-6 right-6 z-50">
+  <button id="chatToggle"
+    class="w-16 h-16 rounded-full
+           bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
+           shadow-2xl
+           flex items-center justify-center
+           text-white text-2xl
+           animate-pulse
+           hover:scale-110 transition-all duration-300">
+    🤖
+  </button>
+</div>
+<div id="chatBox"
+     class="fixed bottom-24 right-6 w-80
+            bg-white rounded-2xl shadow-2xl
+            hidden z-50">
+
+  <!-- Header -->
+  <div class="bg-gradient-to-r from-blue-500 to-purple-600
+              text-white p-4 rounded-t-2xl
+              flex justify-between items-center">
+    <h3 class="font-bold">OotaKatte AI Support</h3>
+    <button onclick="toggleChat()">✖</button>
+  </div>
+
+  <!-- Messages -->
+  <div id="chatMessages"
+       class="p-4 space-y-3 text-sm text-gray-700 h-56 overflow-y-auto">
+    <div class="bg-gray-100 p-3 rounded-xl">
+      👋 Hi! I’m <b>OotaKatte AI</b><br>
+      Ask me about today’s food menu 🍽️
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="flex border-t">
+    <input id="userInput"
+      type="text"
+      placeholder="Ask about food, price, help..."
+      class="flex-1 px-3 py-2 outline-none text-sm rounded-bl-2xl">
+
+    <button onclick="sendMessage()"
+      class="bg-blue-500 hover:bg-blue-600
+             text-white px-4 rounded-br-2xl">
+      Send
+    </button>
+  </div>
+
+</div>
+<script>
+  const chatBox = document.getElementById("chatBox");
+  const chatToggle = document.getElementById("chatToggle");
+
+  function toggleChat() {
+    chatBox.classList.toggle("hidden");
+  }
+
+  chatToggle.addEventListener("click", toggleChat);
+
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const messages = document.getElementById("chatMessages");
+
+    const userText = input.value.trim();
+    if (userText === "") return;
+
+    // User message
+    messages.innerHTML += `
+      <div class="text-right">
+        <div class="inline-block bg-blue-500 text-white
+                    p-2 rounded-xl max-w-xs">
+          ${userText}
+        </div>
+      </div>
+    `;
+
+    input.value = "";
+
+    let reply =
+      "🤖 Sorry, I can help with menu, price, address or contact.";
+
+    const text = userText.toLowerCase();
+
+    if (text.includes("food") || text.includes("menu") || text.includes("available")) {
+      reply = `
+        🍛 <b>Today's Available Foods</b><br>
+        • Jolada Rotti<br>
+        • Ennegayi (Brinjal Curry)<br>
+        • Badanekayi Palya<br>
+        • Akki Rotti<br>
+        • North Karnataka Dal<br>
+        • Buttermilk 🥛
+      `;
+    } else if (text.includes("price")) {
+      reply = "💰 Prices range from ₹80 to ₹180 depending on the dish.";
+    } else if (text.includes("address")) {
+      reply = "📍 Pattanagere, near RV College of Engineering, Bangalore.";
+    } else if (text.includes("contact")) {
+      reply = "📞 +91 98765 43210 | ✉️ support@ootakatte.in";
+    }
+
+    setTimeout(() => {
+      messages.innerHTML += `
+        <div class="text-left">
+          <div class="inline-block bg-gray-100 p-2 rounded-xl max-w-xs">
+            ${reply}
+          </div>
+        </div>
+      `;
+      messages.scrollTop = messages.scrollHeight;
+    }, 500);
+  }
+</script>
+
+    {% block body %}
+
+    {% endblock  %}
+</body>
+</html>

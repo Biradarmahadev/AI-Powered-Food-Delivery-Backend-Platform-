@@ -1,0 +1,54 @@
+{% extends 'myapp/base.html' %}
+{% block body %}
+<div>
+    {% for item in item_list %}
+    <div class="max-w-6xl mx-auto grid grid-cols-2 gap-8 my-10">
+
+  <!-- ITEM CARD -->
+  <div
+    class="flex gap-5 p-6
+           bg-white rounded-2xl shadow-lg
+           transition-all duration-300
+           hover:shadow-2xl hover:scale-[1.02]">
+
+    <!-- Image -->
+    <div class="w-1/3">
+      <img
+        src="{{ item.item_image }}"
+        alt="{{ item.item_name }}"
+        class="w-full h-36 object-cover rounded-xl">
+    </div>
+
+    <!-- Content -->
+    <div class="w-1/2 space-y-2">
+      <h2 class="text-lg font-bold text-gray-800">
+        {{ item.item_name }}
+      </h2>
+      <p class="text-gray-600 text-sm line-clamp-2">
+        {{ item.item_desc }}
+      </p>
+      <p class="text-green-600 font-extrabold text-lg">
+        ₹ {{ item.item_price }}
+      </p>
+    </div>
+
+    <!-- Button -->
+    <div class="w-1/6 flex items-end justify-end">
+      <a
+        href="{% url 'myapp:detail' item.id %}"
+        class="bg-red-500 hover:bg-red-600
+               text-white font-semibold
+               px-4 py-2 rounded-xl
+               transition-all duration-300">
+        View
+      </a>
+    </div>
+
+  </div>
+  <!-- END CARD -->
+
+</div>
+
+    {% endfor %}
+</div>
+{% endblock  %}

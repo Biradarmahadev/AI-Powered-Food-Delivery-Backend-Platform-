@@ -1,0 +1,76 @@
+
+{% extends 'myapp/base.html' %}
+{% block body %}
+<div class="max-w-6xl mx-auto my-12 p-8 bg-white rounded-3xl shadow-xl">
+
+  <div class="flex flex-col md:flex-row gap-10">
+
+    <!-- Image Section -->
+    <div class="md:w-1/2 flex justify-center">
+      <img
+        src="{{ item.item_image }}"
+        alt="{{ item.item_name }}"
+        class="w-full max-w-md h-96 object-cover rounded-2xl shadow-lg">
+    </div>
+
+    <!-- Content Section -->
+    <div class="md:w-1/2 space-y-6">
+
+      <h1 class="text-4xl font-extrabold text-gray-800">
+        {{ item.item_name }}
+      </h1>
+
+      <p class="text-2xl font-bold text-green-600">
+        ₹ {{ item.item_price }}
+      </p>
+
+      <!-- Description -->
+      <div class="space-y-2">
+        <h2 class="text-lg font-semibold text-gray-700">
+          Description
+        </h2>
+        <p class="text-gray-600 leading-relaxed">
+          {{ item.item_desc }}
+        </p>
+      </div>
+
+      <!-- Extra Details -->
+      <div class="grid grid-cols-2 gap-4 text-sm text-gray-600">
+        <div>
+          <span class="font-semibold">Cuisine:</span> Uttara Karnataka
+        </div>
+        <div>
+          <span class="font-semibold">Category:</span> Main Course
+        </div>
+        <div>
+          <span class="font-semibold">Spice Level:</span> Medium 🌶️
+        </div>
+        <div>
+          <span class="font-semibold">Serves:</span> 1 Person
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex gap-4 pt-4">
+        <a
+          href="{% url 'myapp:update_item' item.id %}"
+          class="bg-yellow-500 hover:bg-yellow-600
+                 px-6 py-3 rounded-xl text-white font-semibold
+                 transition-all duration-300 hover:scale-105">
+          Edit Item
+        </a>
+
+        <a
+          href="{% url 'myapp:delete_item' item.id %}"
+          class="bg-red-500 hover:bg-red-600
+                 px-6 py-3 rounded-xl text-white font-semibold
+                 transition-all duration-300 hover:scale-105">
+          Delete Item
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
