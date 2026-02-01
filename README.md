@@ -64,19 +64,39 @@ Modern food delivery backend that combines **high-performance APIs**, **real-tim
 
 <br/>
 
-## 🏗 Modern Architecture Overview
+
+## Modern System Architecture
 
 ```mermaid
-graph TD
-    A[Customer / Restaurant / Rider App] -->|HTTPS / WebSocket| B[AWS API Gateway / CloudFront]
-    B --> C[Load Balancer]
-    C --> D[Django REST Framework Backend<br>EC2 / ECS / EKS]
-    D --> E[PostgreSQL RDS]
-    D --> F[Redis ElastiCache<br>Cache + Pub/Sub + Channels]
-    D -->|HTTP/gRPC| G[FastAPI ML Microservice<br>EC2 / Lambda / SageMaker]
-    G --> H[S3 Models & Artifacts]
-    D --> I[AWS SQS / Celery<br>Background Tasks]
-    I --> J[Notifications Service]
+graph LR
+    %% Modern styling
+    classDef app fill:#1a1a2e,stroke:#00d4ff,stroke-width:2px,color:#e0f7ff,rx:10px
+    classDef gateway fill:#0f3460,stroke:#e94560,stroke-width:2px,color:#fff,rx:10px
+    classDef backend fill:#16213e,stroke:#00ff9f,stroke-width:2px,color:#e0fff5,rx:10px
+    classDef db fill:#0f4c75,stroke:#ffdd57,stroke-width:2px,color:#fffde7,rx:10px
+    classDef ml fill:#2c003e,stroke:#ff6f61,stroke-width:2px,color:#ffebee,rx:10px
+    classDef infra fill:#1b1b32,stroke:#a78bfa,stroke-width:2px,color:#f3e8ff,rx:10px
+
+    %% Flow
+    A[Customer / Restaurant / Rider App 📱]:::app -->|HTTPS + WebSocket| B[AWS API Gateway / CloudFront 🌐]:::gateway
+
+    B --> C[Load Balancer ⚖️]:::gateway
+    C --> D[Django REST Framework Backend<br>EC2 / ECS / EKS 🐍]:::backend
+
+    D --> E[PostgreSQL RDS<br>Relational Data 🗄️]:::db
+    D --> F[Redis ElastiCache<br>Cache + Pub/Sub + Channels ⚡]:::db
+
+    D -->|HTTP/gRPC| G[FastAPI ML Microservice<br>EC2 / Lambda / SageMaker 🤖]:::ml
+    G --> H[S3<br>Models + Artifacts 📦]:::infra
+
+    D --> I[AWS SQS / Celery<br>Background Tasks ⏳]:::infra
+    I --> J[Notifications Service<br>Push / Email / SMS 📩]:::infra
+
+    %% Styling for legend
+    classDef legend fill:#0f0f1a,stroke:#444,stroke-width:1px,color:#aaa
+    Legend[→ HTTPS / Sync<br>⇒ WebSocket / Real-time<br>→ Async / Background]:::legend
+
+    style Legend text-align:left
 ```
 
 <br/>
@@ -182,7 +202,7 @@ MIT License
 
 <div align="center">
   <br/>
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=footer&text=Bon%20App%C3%A9tit%20%E2%9C%A8&fontSize=36&fontColor=fff&animation=twinkling" alt="waving footer"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=120&section=footer&text=Thank%20You%C3%A9%20%9C%A8&fontSize=36&fontColor=fff&animation=twinkling" alt="waving footer"/>
 </div>
 ```
 
