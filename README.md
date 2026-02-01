@@ -1,24 +1,25 @@
-
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rounded&color=gradient&height=180&section=header&text=AI-Powered%20Food%20Delivery%20Backend&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=38" alt="header" width="100%"/>
+  <img src="https://capsule-render.vercel.app/api?type=rounded&color=gradient&height=180&section=header&text=AI-Powered%20Food%20Delivery%20Backend&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=38" 
+       alt="Project Header" 
+       width="100%"/>
 </div>
+
+<br/>
 
 <div align="center">
   <h1>🍔 AI-Powered Food Delivery Backend Platform</h1>
   <h3>Scalable, production-ready backend with intelligent recommendations, demand forecasting & real-time order orchestration</h3>
 
-  <img src="https://socialify.git.ci/Biradarmahadev/AI-Powered-Food-Delivery-Backend-Platform/image?description=1&font=Inter&forks=1&issues=1&language=1&name=1&owner=1&pattern=Plus&pulls=1&stargazers=1&theme=Auto"
-       alt="AI-Powered Food Delivery Backend – Socialify Banner"
-       width="780"
-       style="border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin: 20px 0;"/>
+  <!-- Correct Socialify banner using your actual username -->
+  <img src="https://socialify.git.ci/Biradarmahadev/AI-Powered-Food-Delivery-Backend-Platform-/image?custom_description=Built+a+scalable+Django-based+backend+with+AI-driven+recommendations%2C+demand+forecasting%2C+and+real-time+order+tracking%2C+deployed+on+AWS+using+Docker+and+Redis.&description=1&font=Bitter&forks=1&issues=1&language=1&logo=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F2178947764%2Fvector%2Fgenerate-ai-artificial-intelligence-logo-ai-logo-concept-vector-symbol-abstract-letter-ai.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3D0RRVrRaS5Kotx6qUBvpqdOX7v8QGzsLWITmfPaJXMZk%3D&name=1&owner=1&pattern=Transparent&pulls=1&stargazers=1&theme=Auto"/>
 
   <br/><br/>
 
+  <!-- Tech badges -->
   <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django"/>
   <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/>
   <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
   <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis"/>
-  &nbsp;
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/>
   <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white" alt="AWS"/>
   <img src="https://img.shields.io/badge/WebSockets-000000?style=for-the-badge&logo=socketdotio&logoColor=white" alt="WebSockets"/>
@@ -26,10 +27,10 @@
 
   <br/><br/>
 
+  <!-- Status badges -->
   <img src="https://img.shields.io/badge/Status-Production%20Ready-00C853?style=for-the-badge&logo=checkmarx&logoColor=white" alt="Production Ready"/>
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License"/>
   <img src="https://img.shields.io/badge/Built%20for-FoodTech%20Scale-FF4081?style=for-the-badge&logo=food&logoColor=white" alt="FoodTech Scale"/>
-
 </div>
 
 <br/>
