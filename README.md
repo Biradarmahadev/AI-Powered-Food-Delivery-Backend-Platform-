@@ -68,7 +68,7 @@ Modern food delivery backend that combines **high-performance APIs**, **real-tim
 ## Modern System Architecture
 
 ```mermaid
-graph LR
+graph TB
     %% Modern styling
     classDef app fill:#1a1a2e,stroke:#00d4ff,stroke-width:2px,color:#e0f7ff,rx:10px
     classDef gateway fill:#0f3460,stroke:#e94560,stroke-width:2px,color:#fff,rx:10px
@@ -79,7 +79,6 @@ graph LR
 
     %% Flow
     A[Customer / Restaurant / Rider App 📱]:::app -->|HTTPS + WebSocket| B[AWS API Gateway / CloudFront 🌐]:::gateway
-
     B --> C[Load Balancer ⚖️]:::gateway
     C --> D[Django REST Framework Backend<br>EC2 / ECS / EKS 🐍]:::backend
 
@@ -92,7 +91,7 @@ graph LR
     D --> I[AWS SQS / Celery<br>Background Tasks ⏳]:::infra
     I --> J[Notifications Service<br>Push / Email / SMS 📩]:::infra
 
-    %% Styling for legend
+    %% Legend
     classDef legend fill:#0f0f1a,stroke:#444,stroke-width:1px,color:#aaa
     Legend[→ HTTPS / Sync<br>⇒ WebSocket / Real-time<br>→ Async / Background]:::legend
 
