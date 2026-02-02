@@ -65,7 +65,7 @@ Modern food delivery backend that combines **high-performance APIs**, **real-tim
 <br/>
 
 
-## Modern System Architecture
+## System Architecture
 
 ```mermaid
 graph TB
